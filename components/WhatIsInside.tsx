@@ -65,7 +65,7 @@ const WhatIsInside: React.FC = () => {
           <div className="relative inline-block group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <img 
-              src="https://picsum.photos/seed/content/1200/600" 
+              src="https://i.postimg.cc/g2YFXKMG/Ebook_Trịnh_Trang.png" 
               alt="Ebook Preview" 
               className="relative w-full max-w-3xl h-auto rounded-2xl shadow-2xl border-4 border-white"
             />

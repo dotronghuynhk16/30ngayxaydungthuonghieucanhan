@@ -16,9 +16,9 @@ const AboutAuthor: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-4 border-2 border-red-600/30 rounded-3xl -z-10 translate-x-8 translate-y-8"></div>
               <img 
-                src="https://picsum.photos/seed/author/600/800" 
+                src="https://i.postimg.cc/g2YFXKMG/Ebook_Trịnh_Trang.png" 
                 alt="Trịnh Trang" 
-                className="w-full h-auto rounded-2xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-auto rounded-2xl shadow-2xl transition-all duration-700 hover:scale-[1.02]"
               />
               <div className="absolute bottom-6 left-6 right-6 bg-red-600 p-6 rounded-2xl shadow-xl">
                 <div className="flex items-center gap-4">

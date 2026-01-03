@@ -22,12 +22,12 @@ const ThankYou: React.FC = () => {
 
         <div className="space-y-4">
           <a 
-            href="https://picsum.photos/seed/pdf/800/1000" // Placeholder for actual PDF link
+            href="https://heyzine.com/flip-book/c5c3db13c7.html" 
             target="_blank"
             rel="noopener noreferrer"
             className="w-full bg-red-600 text-white font-bold text-xl py-5 rounded-2xl shadow-xl shadow-red-600/20 flex items-center justify-center gap-3 hover:bg-red-700 transition-all active:scale-95"
           >
-            TẢI EBOOK VỀ MÁY TẠI ĐÂY
+            XEM & TẢI EBOOK TẠI ĐÂY
             <Download className="w-6 h-6" />
           </a>
 

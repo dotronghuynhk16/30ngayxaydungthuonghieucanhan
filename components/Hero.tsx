@@ -41,8 +41,8 @@ const Hero: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-red-100 rounded-3xl rotate-3 blur-2xl opacity-50 -z-10"></div>
               <img 
-                src="https://picsum.photos/seed/ebook/800/1000" 
-                alt="Mockup Ebook 3D" 
+                src="https://i.postimg.cc/g2YFXKMG/Ebook_Trịnh_Trang.png" 
+                alt="Ebook Trịnh Trang" 
                 className="w-full h-auto rounded-2xl shadow-2xl transform lg:rotate-2 transition-transform hover:rotate-0 duration-500"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
