@@ -62,15 +62,21 @@ const WhatIsInside: React.FC = () => {
         </div>
 
         <div className="mt-20 text-center">
-          <div className="relative inline-block group">
+          <div className="relative inline-block group max-w-4xl">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <img 
-              src="https://i.postimg.cc/g2YFXKMG/Ebook_Trịnh_Trang.png" 
-              alt="Ebook Preview" 
-              className="relative w-full max-w-3xl h-auto rounded-2xl shadow-2xl border-4 border-white"
-            />
+            <div className="relative bg-white p-2 rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+              <img 
+                src="https://i.postimg.cc/W49BPvKL/Noi-dung-1.jpg" 
+                alt="Nội dung bên trong Ebook" 
+                className="w-full h-auto rounded-xl"
+                onError={(e) => {
+                  // Fallback nếu link postimg bị lỗi
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=1200";
+                }}
+              />
+            </div>
           </div>
-          <p className="mt-6 text-slate-400 font-medium">Hình ảnh thực tế từ các chương trong Ebook</p>
+          <p className="mt-6 text-slate-400 font-medium italic">Hình ảnh thực tế các trang lộ trình chi tiết bên trong Ebook</p>
         </div>
       </div>
     </section>
