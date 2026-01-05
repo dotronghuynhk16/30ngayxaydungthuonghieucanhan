@@ -9,21 +9,45 @@ interface Props {
 const RegistrationForm: React.FC<Props> = ({ onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
+    ho_ten: '',
+    so_dien_thoai: '',
     email: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form data submitted:', formData);
+    const webhookUrl = 'https://us-central1-zenleads-ai.cloudfunctions.net/publicWebhook/ywTGVothGcOeuCjJZsVi';
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Lỗi máy chủ: ' + response.status);
+      }
+
+      const responseData = await response.json();
+
+      // Logic xử lý chuyển hướng hoặc hiển thị thông báo thành công
+      if (responseData.redirectTo) {
+        window.location.href = responseData.redirectTo;
+      } else {
+        // Nếu không có link chuyển hướng từ server, sử dụng callback onSuccess hiện tại (hiển thị màn hình cảm ơn)
+        onSuccess();
+      }
+    } catch (error) {
+      console.error('Lỗi khi gửi form:', error);
+      alert('Đã có lỗi xảy ra trong quá trình gửi thông tin. Vui lòng thử lại sau hoặc liên hệ trực tiếp với Trang.');
+    } finally {
       setLoading(false);
-      onSuccess();
-    }, 1500);
+    }
   };
 
   return (
@@ -56,18 +80,19 @@ const RegistrationForm: React.FC<Props> = ({ onSuccess }) => {
                 🎁 MIỄN PHÍ DÀNH CHO BẠN
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5 mt-4">
+              <form id="contact-form-landing-page" onSubmit={handleSubmit} className="space-y-5 mt-4">
                 <div>
                   <label className="block text-slate-700 font-bold mb-2 ml-1">Họ và tên của bạn</label>
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                     <input 
                       required
+                      name="ho_ten"
                       type="text" 
                       placeholder="Nguyễn Văn A" 
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-red-600 focus:bg-white outline-none transition-all text-slate-900"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      value={formData.ho_ten}
+                      onChange={(e) => setFormData({...formData, ho_ten: e.target.value})}
                     />
                   </div>
                 </div>
@@ -78,11 +103,12 @@ const RegistrationForm: React.FC<Props> = ({ onSuccess }) => {
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                     <input 
                       required
+                      name="so_dien_thoai"
                       type="tel" 
                       placeholder="09xx xxx xxx" 
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-red-600 focus:bg-white outline-none transition-all text-slate-900"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      value={formData.so_dien_thoai}
+                      onChange={(e) => setFormData({...formData, so_dien_thoai: e.target.value})}
                     />
                   </div>
                 </div>
@@ -92,6 +118,7 @@ const RegistrationForm: React.FC<Props> = ({ onSuccess }) => {
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5" />
                     <input 
+                      name="email"
                       type="email" 
                       placeholder="vidu@gmail.com" 
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-red-600 focus:bg-white outline-none transition-all text-slate-900"
