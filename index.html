@@ -22,6 +22,10 @@
       .animate-shake {
         animation: shake 0.5s ease-in-out infinite;
       }
+      /* Tinh chỉnh Z-index của chatbot nếu cần để không bị đè bởi các thành phần khác */
+      #tudongchat-container {
+        z-index: 9999 !important;
+      }
     </style>
   <script type="importmap">
 {
@@ -36,7 +40,17 @@
 </head>
   <body>
     <div id="root"></div>
-    <!-- Điểm mấu chốt: Thêm thẻ script dẫn tới tệp khởi chạy ứng dụng -->
+    <!-- Script khởi chạy ứng dụng React -->
     <script type="module" src="/index.tsx"></script>
+
+    <!-- Tích hợp Chatbot AI TuDongChat 24/7 -->
+    <script src="https://app.tudongchat.com/js/chatbox.js"></script>
+    <script>
+      // Khởi tạo chatbot sau khi trang đã sẵn sàng
+      window.addEventListener('load', function() {
+        const tudong_chatbox = new TuDongChat('Kg-gq8ZIQX8mW9QbFa6Jp');
+        tudong_chatbox.initial();
+      });
+    </script>
   </body>
 </html>

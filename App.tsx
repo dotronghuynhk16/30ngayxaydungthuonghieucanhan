@@ -7,6 +7,7 @@ import AboutAuthor from './components/AboutAuthor';
 import RegistrationForm from './components/RegistrationForm';
 import StickyCTA from './components/StickyCTA';
 import ThankYou from './components/ThankYou';
+import ChatbotCallout from './components/ChatbotCallout';
 
 const App: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -50,6 +51,7 @@ const App: React.FC = () => {
         </div>
       </footer>
 
+      <ChatbotCallout />
       {showSticky && <StickyCTA />}
     </div>
   );
